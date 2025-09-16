@@ -122,7 +122,6 @@ For team projects, use a dedicated bot account ([Lullabot ADR reference](https:/
 
 - **GitHub Actions Workflows**:
   - `test.yml`: Comprehensive testing pipeline
-  - `claude.yml`: AI assistant integration
   - `release.yml`: Release automation
 - **Git Hooks**: Automated pre-commit checks via Husky
 - **Node.js Integration**: Package management and frontend tooling
@@ -141,10 +140,10 @@ The template includes comprehensive testing infrastructure that'll make your tes
 ### PHPUnit Tests
 
 ```bash
-# Run all tests (grab a coffee ☕, this might take a moment)
+# Run all tests
 vendor/bin/phpunit
 
-# Run specific test suites (for the impatient developers)
+# Run specific test suites
 vendor/bin/phpunit --testsuite=unit
 vendor/bin/phpunit --testsuite=kernel
 vendor/bin/phpunit --testsuite=functional
@@ -206,24 +205,6 @@ npm run format
    # List installed browsers
    npx playwright install --dry-run
    ```
-
-#### Environment Configuration
-
-Set the Drupal base URL (optional - defaults to `http://127.0.0.1:8080`):
-
-```bash
-# For custom Drupal URL
-export DRUPAL_BASE_URL="https://your-drupal-site.local"
-
-# Or add to your .env file
-echo "DRUPAL_BASE_URL=https://your-drupal-site.local" >> .env
-```
-
-#### Test Environment Requirements
-
-- **Basic Tests**: Any accessible Drupal installation
-- **Authentication Tests**: Admin user with credentials (username: `admin`, password: `admin`)
-- **Module Tests**: Drupal site with your module enabled and admin access
 
 #### Troubleshooting Installation
 
@@ -290,40 +271,7 @@ The template includes three main workflows:
 - **AI Integration**: Supports AI-assisted development workflows
 - **Release Automation**: Handles versioning and releases (see step 3 in setup for permissions)
 
-## 🔄 Development Workflow
-
-1. 🌿 Create feature branches from `main`
-2. ✍️ Write tests for new functionality (TDD FTW!)
-3. 💻 Implement features following Drupal coding standards
-4. 🤖 Code quality checks run automatically via GitHub Actions
-5. 🔀 Create pull requests for review
-6. 🎉 Merge after tests pass and review approval (victory dance optional but encouraged)
-
-## 🤖 AI Assistant Integration
-
-This template is optimized for AI-assisted development (yes, your robot overlords appreciate good code structure too!):
-
-- Clear file organization and naming conventions
-- Comprehensive documentation and examples
-- Structured test patterns for AI to follow
-- Pre-configured development tools and workflows
-
-## ✅ Compatibility
-
-- **Drupal**: 10.x, 11.x
-- **PHP**: 8.1+
-- **Node.js**: 18+
-- **GitHub Actions**: Latest runner versions
-
-## 🤝 Contributing
-
-After setting up your module (you're almost there!):
-
-1. Update this README with module-specific information
-2. Customize the GitHub templates and workflows
-3. Add your module's specific documentation
-4. Configure any additional development tools needed
-
-## 📜 License
-
-Update the license information according to your module's licensing requirements. Remember: sharing is caring! 💙
+<details>
+<summary>Troubleshooting</summary>
+If the <code>Tag</code> action for the semantic release job is failing because of missing GitHub permissions, then navigate to "Settings" → "Actions" → "General" → "Workflow permissions" and check <em>Read and write permissions</em> and <em>Allow GitHub Actions to create and approve pull requests</em>.
+</details>
