@@ -105,21 +105,25 @@ For team projects, use a dedicated bot account ([Lullabot ADR reference](https:/
 To enable `composer require vendor/module-name` installation:
 
 1. **Ensure your `composer.json` is properly configured** with:
+
 - Correct `name` field (e.g., `"lullabot/my-module"`)
 - `type: "drupal-module"`
 - Proper `description` and `keywords`
 
 2. **Submit to Packagist**:
+
 - Visit [packagist.org](https://packagist.org)
 - Click "Submit" and enter your GitHub repository URL
 - Packagist will automatically sync with your repository
 
 3. **Enable auto-updating**:
+
 - Go to your package page on Packagist
 - Click "Settings" → "GitHub Service Hook"
 - This ensures new releases are automatically published
 
 After submission, users can install your module with:
+
 ```bash
 composer require vendor/module-name
 ```
@@ -136,6 +140,7 @@ For official Drupal.org contrib modules requiring `drupal/module-name` namespaci
 **Overview**: Use GitHub Actions to automatically push new tags to your Drupal.org project repository at `https://git.drupalcode.org/project/module_name`.
 
 **Requirements**:
+
 - Approved Drupal.org project page
 - SSH key or personal access token for GitLab authentication
 - GitHub Action that triggers on new releases/tags
@@ -159,6 +164,7 @@ gitGraph:
 ```
 
 **Process Flow**:
+
 1. **GitHub**: Developer workflow with PRs and semantic commits
 2. **Auto-release**: Semantic Release creates tags automatically
 3. **Mirror Action**: GitHub Action pushes code to `git.drupalcode.org`
