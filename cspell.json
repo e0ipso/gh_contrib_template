@@ -32,7 +32,11 @@
     "behat",
     "ddev",
     "opencode",
-    "NOTICKET"
+    "NOTICKET",
+    "namespacing",
+    "Packagist",
+    "packagist",
+    "drupalcode"
   ],
   "ignorePaths": [
     "node_modules/**",

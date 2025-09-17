@@ -97,6 +97,83 @@ For team projects, use a dedicated bot account ([Lullabot ADR reference](https:/
 - Update `composer.json` with your module's metadata
 - Customize the module description and dependencies
 
+> **Note**: This template is designed for modules hosted on GitHub with `vendor/module-name` namespacing (e.g., `lullabot/my-module`). For Drupal.org contrib modules requiring `drupal/module-name` namespacing, you can use GitHub Actions to mirror your repository to GitLab whenever new tags are created.
+
+<details>
+<summary><strong>📦 Publish to Packagist for Composer Installation</strong></summary>
+
+To enable `composer require vendor/module-name` installation:
+
+1. **Ensure your `composer.json` is properly configured** with:
+
+- Correct `name` field (e.g., `"lullabot/my-module"`)
+- `type: "drupal-module"`
+- Proper `description` and `keywords`
+
+2. **Submit to Packagist**:
+
+- Visit [packagist.org](https://packagist.org)
+- Click "Submit" and enter your GitHub repository URL
+- Packagist will automatically sync with your repository
+
+3. **Enable auto-updating**:
+
+- Go to your package page on Packagist
+- Click "Settings" → "GitHub Service Hook"
+- This ensures new releases are automatically published
+
+After submission, users can install your module with:
+
+```bash
+composer require vendor/module-name
+```
+
+**Note**: With semantic release enabled, your tags and releases are automatically created when you merge PRs with conventional commit messages (feat, fix, etc.).
+
+</details>
+
+<details>
+<summary><strong>🔄 Mirror to Drupal.org for Official Contrib</strong></summary>
+
+For official Drupal.org contrib modules requiring `drupal/module-name` namespacing, you can maintain your GitHub workflow while mirroring to GitLab:
+
+**Overview**: Use GitHub Actions to automatically push new tags to your Drupal.org project repository at `https://git.drupalcode.org/project/module_name`.
+
+**Requirements**:
+
+- Approved Drupal.org project page
+- SSH key or personal access token for GitLab authentication
+- GitHub Action that triggers on new releases/tags
+
+```mermaid
+gitGraph:
+    commit id: "Initial commit"
+    branch github
+    checkout github
+    commit id: "feat: add feature"
+    commit id: "fix: bug fix"
+    checkout main
+    merge github
+    commit id: "v1.1.0 (auto-tag)" tag: "v1.1.0"
+
+    %% Mirror action
+    branch drupal-mirror
+    checkout drupal-mirror
+    commit id: "Mirror to GitLab"
+    checkout main
+```
+
+**Process Flow**:
+
+1. **GitHub**: Developer workflow with PRs and semantic commits
+2. **Auto-release**: Semantic Release creates tags automatically
+3. **Mirror Action**: GitHub Action pushes code to `git.drupalcode.org`
+4. **Manual Step**: Create release on Drupal.org project page using the mirrored tag
+
+**Note**: While code mirroring can be automated, Drupal.org releases must be manually created through the project interface to generate the `drupal/module-name` Composer package.
+
+</details>
+
 ### 6. Clean Up Example Files
 
 - Delete `dummy.css` and `dummy.js` files - these are only included to demonstrate that the linting and code quality checks work correctly
