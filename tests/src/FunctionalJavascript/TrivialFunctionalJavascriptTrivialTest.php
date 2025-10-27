@@ -27,14 +27,6 @@ class TrivialFunctionalJavascriptTrivialTest extends WebDriverTestBase {
    * Tests that functional javascript tests can run.
    */
   public function testTrivial(): void {
-    // Create a simple node to have a valid page to visit.
-    // This ensures WebDriver session is properly initialized.
-    $this->drupalCreateContentType(['type' => 'page']);
-    $node = $this->drupalCreateNode();
-
-    // Visit the node to initialize WebDriver with a valid domain/cookie context.
-    $this->drupalGet($node->toUrl());
-
     $this->assertEquals('trivial', strtolower('TRIVIAL'));
   }
 
