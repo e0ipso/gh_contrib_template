@@ -24,6 +24,22 @@ class TrivialFunctionalJavascriptTrivialTest extends WebDriverTestBase {
   protected $defaultTheme = 'stark';
 
   /**
+   * {@inheritdoc}
+   */
+  protected function tearDown(): void {
+    // Visit a blank page before tearDown to avoid sessionStorage errors.
+    // WebDriverTestBase tries to clear sessionStorage in tearDown(), which
+    // fails if no page was ever visited during the test.
+    try {
+      $this->drupalGet('');
+    }
+    catch (\Exception $e) {
+      // If even this fails, continue with tearDown anyway.
+    }
+    parent::tearDown();
+  }
+
+  /**
    * Tests that functional javascript tests can run.
    */
   public function testTrivial(): void {
