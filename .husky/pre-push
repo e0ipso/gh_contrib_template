@@ -20,7 +20,7 @@ fi
 # Check if branch follows the naming convention
 # Pattern: [ticket-id]--[description]
 # ticket-id can be alphanumeric with hyphens, or special keywords
-VALID_PATTERN="^([A-Za-z0-9]+-[0-9]+|NOTICKET|HOTFIX|0)--[a-z0-9-]+$"
+VALID_PATTERN="^([A-Za-z0-9]+-[0-9]+|NOTICKET|HOTFIX|[0-9]+)--[a-z0-9-]+$"
 
 if echo "$BRANCH" | grep -qE "$VALID_PATTERN"; then
     echo "✅ Branch name follows convention: $BRANCH"
