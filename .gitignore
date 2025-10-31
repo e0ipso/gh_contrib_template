@@ -17,10 +17,7 @@ playwright-report/
 package-lock.json
 
 # AI Task Manager
-.claude/commands/tasks/create-plan.md
-.claude/commands/tasks/execute-blueprint.md
-.claude/commands/tasks/execute-task.md
-.claude/commands/tasks/generate-tasks.md
-.claude/commands/tasks/fix-broken-tests.md
+.claude/commands/
+.gemini/commands/
 .ai/task-manager
 
