@@ -47,8 +47,8 @@ This sets up automatic git hooks for:
 
 If you plan to use AI assistants for development:
 
-- Rename `AGENTS.md` to match your preferred assistant (e.g., `CLAUDE.md`, `GEMINI.md`)
-- Rename `tests/e2e/AGENTS.md` to match your preferred assistant (e.g., `CLAUDE.md`, `GEMINI.md`)
+- Rename or symlink `AGENTS.md` to match your preferred assistant (e.g., `CLAUDE.md`, `GEMINI.md`)
+- Rename or symlink `tests/e2e/AGENTS.md` to match your preferred assistant (e.g., `CLAUDE.md`, `GEMINI.md`)
 - Install the AI task manager:
 
 ```bash
